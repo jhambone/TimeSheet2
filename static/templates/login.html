@@ -1,0 +1,37 @@
+
+{% extends 'loginbase.html' %}
+{% block content %}
+
+
+
+    <form action="/login/" method="post" class="form-horizontal">
+     <div class="form-group">
+
+      {% if next %}
+		<input type="hidden" name="next" value="{{ next }}" />
+      {% endif %}
+
+
+         <label class="col-sm-4 control-label">Username: </label>
+           <div class="col-sm-3">
+        <input type="text" name="username" value="{{ username}}" class="form-control" id="username" placeholder="Username">
+      </div>
+</div>
+
+  <div class="form-group">
+
+    <label  class="col-sm-4 control-label">Password: </label>
+    <div class="col-sm-3">
+      <input type="password" name="password" value="" class="form-control" id="password" placeholder="Password">
+    </div>
+  </div>
+
+        <div class="form-group" align="left">
+        <div class="col-sm-offset-4 col-sm-3">
+          <button type="submit" value="Log In" class="btn btn-default">Login</button>
+            <br> {{ state }}
+    </div>
+  </div>
+</form>
+
+{% endblock %}

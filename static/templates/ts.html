@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block content %}
+
+FOR TESTING ONLY:
+{{ records.timeSheet_code }} <!--- HERE FOR TESTING ---->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div align="left" class="col-md-5">
+                    <nobr><span>img:Print &nbsp &nbsp img:Leave </span></nobr>
+                    <br>
+                    <br>
+
+                    <br>
+                    <nobr><span> Employee:  {{ user.last_name}}, {{ user.first_name }}</span></nobr>
+                    <br>
+                    Employee ID: {{ empID.employeeID }}
+                    <br>
+                    Class: {{ empID.laborType }}
+                    <br>
+                    Date Range: {{ records.startDate }} - {{ records.endDate }}
+                    <br>
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-3">
+                     <span>Status:</span> {{ records.status }} </span>
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <div style="float:left">
+                <table class="table table-condensed table-bordered">
+                <thead>
+
+                        <th nowrap>
+                            Type
+                            <br>
+                            &nbsp
+                        </th>
+                        <th nowrap>
+                            Task Order
+                            <br>
+                            &nbsp
+                        </th>
+                        <th nowrap>
+                            Unit
+                            <br>
+                            &nbsp
+                        </th>
+
+                        {% for x in rangeofdates %}
+                            <th>{{ x|date:"D" }}<br>{{ x|date:"n/j" }}</th>
+                        {% endfor %}
+                        <th>{{ records.endDate|date:"D" }}<br>{{ records.endDate|date:"n/j" }}
+                        </th>
+
+                </thead>
+                <tbody>
+
+
+                     <form method= "POST" action="">
+
+                         {{ timesheetformset.management_form }}
+
+                               {% for form in timesheetformset %}
+                                    <tr>
+                                        {{ form.id }}
+                                        <td>  {{ form.payType }} </td>
+                                        <td>  {{ form.taskOrder_number }} </td>
+                                        <td>  {{ form.unit }} </td>
+                                        <td>  {{ form.hours }} </td>
+
+                                     </tr>
+
+                               {% endfor %}
+
+                             <div align="center" STYLE=" margin-right:190px">
+                                <input type="submit" value="Submit" STYLE="background-color:#E8E8E8; color:#181818 "/>
+                             </div>
+
+
+                      </form>
+
+                </tbody>
+                </table>
+        </div>
+
+<br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+<div>
+
+</div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <nobr> Employee Signature:
+                        <span style="background-color: lightgrey; padding: 5px;"> PLACEHOLDER </span>
+                    </nobr>
+                </div>
+                <br>
+                <div class="col-md-2" style="padding:0.9em">
+                    <nobr> Approval Signature:
+                        <span style="background-color: lightgrey; padding: 5px;"> PLACEHOLDER NAME </span>
+                    </nobr>
+                </div>
+                <div class="col-md-8">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</tbody>
+</table>
+
+{% endblock %}
+
+
+
+
